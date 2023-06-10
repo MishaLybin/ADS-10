@@ -6,20 +6,20 @@
 
 struct Node {
   char value;
- std::vector<Node*> childs;
+  std::vector<Node*> childs;
   explicit Node(char val) : value(val) {}
 };
 
 class Tree {
  private:
- std::vector<std::vector<char>> perms;
- Node* root;
+  std::vector<std::vector<char>> perms;
+  Node* root;
     void createTree(const std::vector<char>& numbers, Node* parent) {
       for (char num : numbers) {
- Node* child = new Node(num);
- parent->childs.push_back(child);
- std::vector<char> new_num(numbers);
- new_num.erase(std::find(new_num.begin(), new_num.end(), num));
+        Node* child = new Node(num);
+        parent->childs.push_back(child);
+        std::vector<char> new_num(numbers);
+        new_num.erase(std::find(new_num.begin(), new_num.end(), num));
         createTree(new_num, child);
       }
     }
